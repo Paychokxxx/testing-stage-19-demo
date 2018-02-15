@@ -4,7 +4,7 @@
   "description": "investigatinf jenkins",
 	
   "scripts": {
-    "api-test-dev": "newman	run Jenkins_Investigation_SWAPI_tests.postman_collection.json"
+    "api-test-dev": "newman run Jenkins_Investigation_SWAPI_tests.postman_collection.json"
   },
   "author": "",
   "license": "ISC",
