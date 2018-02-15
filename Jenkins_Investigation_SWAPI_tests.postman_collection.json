@@ -158,11 +158,17 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c2623a71-0504-43f7-ad8e-4c0c74d2df8d",
+						"id": "a088b291-be50-4ca6-b2c5-ce776d5b5ec8",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(100);",
 							"});"
 						]
 					}
@@ -220,77 +226,6 @@
 					]
 				},
 				"description": "Generated from a curl request: \ncurl \\\"https://swapi.co/api/starships/9/\\\" -H \\\"cookie: __cfduid=daab0cc51311995fb6c23faa247bcdae01512931922; csrftoken=SABZQKlEEnIwNl5A0INM1sSNjgWxmCeV; _ga=GA1.2.1848254515.1516544488; _gid=GA1.2.282880442.1518721317; _gat=1\\\" -H \\\"accept-encoding: gzip, deflate, br\\\" -H \\\"accept-language: ru-UA,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk-UA;q=0.6,uk;q=0.5,ru-RU;q=0.4\\\" -H \\\"user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36\\\" -H \\\"accept: application/json, text/javascript, */*; q=0.01\\\" -H \\\"referer: https://swapi.co/\\\" -H \\\"authority: swapi.co\\\" -H \\\"x-requested-with: XMLHttpRequest\\\" --compressed"
-			},
-			"response": []
-		},
-		{
-			"name": "https://swapi.co/api/starships/666/",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "18c16415-c5f1-44ec-8afb-f1c59dc3864f",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "cookie",
-						"value": "__cfduid=daab0cc51311995fb6c23faa247bcdae01512931922; csrftoken=SABZQKlEEnIwNl5A0INM1sSNjgWxmCeV; _ga=GA1.2.1848254515.1516544488; _gid=GA1.2.282880442.1518721317"
-					},
-					{
-						"key": "accept-encoding",
-						"value": "gzip, deflate, br"
-					},
-					{
-						"key": "accept-language",
-						"value": "ru-UA,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk-UA;q=0.6,uk;q=0.5,ru-RU;q=0.4"
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36"
-					},
-					{
-						"key": "accept",
-						"value": "application/json, text/javascript, */*; q=0.01"
-					},
-					{
-						"key": "referer",
-						"value": "https://swapi.co/"
-					},
-					{
-						"key": "authority",
-						"value": "swapi.co"
-					},
-					{
-						"key": "x-requested-with",
-						"value": "XMLHttpRequest"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "https://swapi.co/api/starships/666/",
-					"protocol": "https",
-					"host": [
-						"swapi",
-						"co"
-					],
-					"path": [
-						"api",
-						"starships",
-						"666",
-						""
-					]
-				},
-				"description": "Generated from a curl request: \ncurl \\\"https://swapi.co/api/starships/666/\\\" -H \\\"cookie: __cfduid=daab0cc51311995fb6c23faa247bcdae01512931922; csrftoken=SABZQKlEEnIwNl5A0INM1sSNjgWxmCeV; _ga=GA1.2.1848254515.1516544488; _gid=GA1.2.282880442.1518721317\\\" -H \\\"accept-encoding: gzip, deflate, br\\\" -H \\\"accept-language: ru-UA,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk-UA;q=0.6,uk;q=0.5,ru-RU;q=0.4\\\" -H \\\"user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36\\\" -H \\\"accept: application/json, text/javascript, */*; q=0.01\\\" -H \\\"referer: https://swapi.co/\\\" -H \\\"authority: swapi.co\\\" -H \\\"x-requested-with: XMLHttpRequest\\\" --compressed"
 			},
 			"response": []
 		}
