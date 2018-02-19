@@ -87,12 +87,15 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e7f79ef3-b98a-4db1-a76b-99cd421fda83",
+						"id": "88ac5df8-9785-471d-874e-e2487ad1f26c",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
-							"});"
+							"});",
+							"",
+							"",
+							"console.log(\"some text\");"
 						]
 					}
 				}
