@@ -87,21 +87,27 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c4178f1a-5af8-4d12-9851-7248555ea93d",
+						"id": "66b58a56-0c1b-45b2-bacc-a57bab7b5fcc",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Status code is\" + pm.response.code, function () {",
+							"pm.test(pm.request.method+\" \"+pm.request.url+\" Status code is \" + pm.response.code, function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
 							"",
-							"console.log(\"some text\");"
+							"",
+							"",
+							"tests[`[INFO] Request params: ${JSON.stringify(request.data)}`] = true;",
+							"",
+							"",
+							"",
+							"console.log('bugaga');"
 						]
 					}
 				}
 			],
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"key": "cookie",
@@ -140,7 +146,10 @@
 						"value": "XMLHttpRequest"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": "{1111111111}"
+				},
 				"url": {
 					"raw": "https://swapi.co/api/people/boda/",
 					"protocol": "https",
