@@ -1,309 +1,268 @@
 {
 	"info": {
-		"name": "Jenkins_Investigation_SWAPI_tests",
-		"_postman_id": "36d1cc05-4ae3-538d-081f-19be2f2c1394",
+		"name": "Building workflows",
+		"_postman_id": "1871748f-de3b-c5d5-f0ff-5c3a075a4170",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "https://swapi.co/api/people/1/",
+			"name": "GET DefenceLevels",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "e7f79ef3-b98a-4db1-a76b-99cd421fda83",
+						"id": "d226067a-ccb4-4990-be69-2334842daafe",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
+							"",
+							"if (JSON.parse(responseBody).length === 0) {",
+							"    ",
+							"    tests[\"DefenceLevels of DeathStar are Destroyed\"] = true;",
+							"",
+							"    postman.setNextRequest(\"post message about completing tests\");",
+							"    ",
+							"} else {",
+							"    ",
+							"    let index = pm.environment.get(\"idOfDefenceLevel\");",
+							"    index++;",
+							"    pm.environment.set(\"idOfDefenceLevel\", index);",
+							"    ",
+							"    tests[\"DefenceLevels of DeathStar are not Destroyed, proceeding again\"] = true;",
+							"    ",
+							"    postman.setNextRequest(\"DELETE 1 Defence level\");",
+							"",
+							"}",
+							"",
+							"",
+							""
 						]
 					}
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Qwerty1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "dark_force",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": [
-					{
-						"key": "cookie",
-						"value": "__cfduid=daab0cc51311995fb6c23faa247bcdae01512931922; csrftoken=SABZQKlEEnIwNl5A0INM1sSNjgWxmCeV; _ga=GA1.2.1848254515.1516544488; _gid=GA1.2.282880442.1518721317; _gat=1"
-					},
-					{
-						"key": "if-none-match",
-						"value": "W/^\\^145c70f4eca80b4752674d42e5bf1bcf^^"
-					},
-					{
-						"key": "accept-encoding",
-						"value": "gzip, deflate, br"
-					},
-					{
-						"key": "accept-language",
-						"value": "ru-UA,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk-UA;q=0.6,uk;q=0.5,ru-RU;q=0.4"
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36"
-					},
-					{
-						"key": "accept",
-						"value": "application/json, text/javascript, */*; q=0.01"
-					},
-					{
-						"key": "referer",
-						"value": "https://swapi.co/"
-					},
-					{
-						"key": "authority",
-						"value": "swapi.co"
-					},
-					{
-						"key": "x-requested-with",
-						"value": "XMLHttpRequest"
-					}
-				],
-				"body": {},
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "https://swapi.co/api/people/1/",
-					"protocol": "https",
+					"raw": "http://localhost:504/defenceLevels/",
+					"protocol": "http",
 					"host": [
-						"swapi",
-						"co"
+						"localhost"
 					],
+					"port": "504",
 					"path": [
-						"api",
-						"people",
-						"1",
+						"defenceLevels",
 						""
 					]
 				},
-				"description": "Generated from a curl request: \ncurl \\\"https://swapi.co/api/people/1/\\\" -H \\\"cookie: __cfduid=daab0cc51311995fb6c23faa247bcdae01512931922; csrftoken=SABZQKlEEnIwNl5A0INM1sSNjgWxmCeV; _ga=GA1.2.1848254515.1516544488; _gid=GA1.2.282880442.1518721317; _gat=1\\\" -H \\\"if-none-match: W/^\\^\\\"145c70f4eca80b4752674d42e5bf1bcf^\\^\\\"\\\" -H \\\"accept-encoding: gzip, deflate, br\\\" -H \\\"accept-language: ru-UA,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk-UA;q=0.6,uk;q=0.5,ru-RU;q=0.4\\\" -H \\\"user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36\\\" -H \\\"accept: application/json, text/javascript, */*; q=0.01\\\" -H \\\"referer: https://swapi.co/\\\" -H \\\"authority: swapi.co\\\" -H \\\"x-requested-with: XMLHttpRequest\\\" --compressed"
+				"description": null
 			},
-			"response": []
+			"response": [
+				{
+					"id": "46d18955-0849-4c9d-a0fb-c37892cf47c3",
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/starships/9/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"starships",
+								"9",
+								""
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [],
+					"responseTime": "0",
+					"body": "{\n  \"name\": \"Death Star\",\n  \"model\": \"DS-1 Orbital Battle Station\",\n  \"manufacturer\": \"Imperial Department of Military Research, Sienar Fleet Systems\",\n  \"cost_in_credits\": \"1000000000000\",\n  \"length\": \"120000\",\n  \"max_atmosphering_speed\": \"n/a\",\n  \"crew\": \"342953\",\n  \"passengers\": \"843342\",\n  \"cargo_capacity\": \"1000000000000\",\n  \"consumables\": \"3 years\",\n  \"hyperdrive_rating\": \"4.0\",\n  \"MGLT\": \"10\",\n  \"starship_class\": \"Deep Space Mobile Battlestation\",\n  \"pilots\": [],\n  \"films\": [\n    \"https://swapi.co/api/films/1/\"\n  ],\n  \"created\": \"2014-12-10T16:36:50.509000Z\",\n  \"edited\": \"2014-12-22T17:35:44.452589Z\",\n  \"url\": \"https://swapi.co/api/starships/9/\"\n}"
+				}
+			]
 		},
 		{
-			"name": "https://swapi.co/api/people/1/ copy",
+			"name": "DELETE 1 Defence level",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "88ac5df8-9785-471d-874e-e2487ad1f26c",
+						"id": "a11e6e52-d99b-40db-bc4a-7e89a21730df",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
+							"    postman.setNextRequest(\"GET DefenceLevels\");",
+							"    let idOfDefenceLevel = pm.environment.get(\"idOfDefenceLevel\");",
+							"    tests[\"DefenceLevel #\" + idOfDefenceLevel + \" of DeathStar are Destroyed\"] = true;",
 							"",
-							"",
-							"console.log(\"some text\");"
+							""
 						]
 					}
 				}
 			],
 			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "cookie",
-						"value": "__cfduid=daab0cc51311995fb6c23faa247bcdae01512931922; csrftoken=SABZQKlEEnIwNl5A0INM1sSNjgWxmCeV; _ga=GA1.2.1848254515.1516544488; _gid=GA1.2.282880442.1518721317; _gat=1"
-					},
-					{
-						"key": "if-none-match",
-						"value": "W/^\\^145c70f4eca80b4752674d42e5bf1bcf^^"
-					},
-					{
-						"key": "accept-encoding",
-						"value": "gzip, deflate, br"
-					},
-					{
-						"key": "accept-language",
-						"value": "ru-UA,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk-UA;q=0.6,uk;q=0.5,ru-RU;q=0.4"
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36"
-					},
-					{
-						"key": "accept",
-						"value": "application/json, text/javascript, */*; q=0.01"
-					},
-					{
-						"key": "referer",
-						"value": "https://swapi.co/"
-					},
-					{
-						"key": "authority",
-						"value": "swapi.co"
-					},
-					{
-						"key": "x-requested-with",
-						"value": "XMLHttpRequest"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "https://swapi.co/api/people/boda/",
-					"protocol": "https",
-					"host": [
-						"swapi",
-						"co"
-					],
-					"path": [
-						"api",
-						"people",
-						"boda",
-						""
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Qwerty1",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "dark_force",
+							"type": "string"
+						}
 					]
 				},
-				"description": "Generated from a curl request: \ncurl \\\"https://swapi.co/api/people/1/\\\" -H \\\"cookie: __cfduid=daab0cc51311995fb6c23faa247bcdae01512931922; csrftoken=SABZQKlEEnIwNl5A0INM1sSNjgWxmCeV; _ga=GA1.2.1848254515.1516544488; _gid=GA1.2.282880442.1518721317; _gat=1\\\" -H \\\"if-none-match: W/^\\^\\\"145c70f4eca80b4752674d42e5bf1bcf^\\^\\\"\\\" -H \\\"accept-encoding: gzip, deflate, br\\\" -H \\\"accept-language: ru-UA,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk-UA;q=0.6,uk;q=0.5,ru-RU;q=0.4\\\" -H \\\"user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36\\\" -H \\\"accept: application/json, text/javascript, */*; q=0.01\\\" -H \\\"referer: https://swapi.co/\\\" -H \\\"authority: swapi.co\\\" -H \\\"x-requested-with: XMLHttpRequest\\\" --compressed"
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:504/defenceLevels/{{idOfDefenceLevel}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "504",
+					"path": [
+						"defenceLevels",
+						"{{idOfDefenceLevel}}"
+					]
+				},
+				"description": null
 			},
-			"response": []
+			"response": [
+				{
+					"id": "1c449355-a149-41a7-9649-9b1648b04b52",
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/starships/9/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"starships",
+								"9",
+								""
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [],
+					"responseTime": "0",
+					"body": "{\n  \"name\": \"Death Star\",\n  \"model\": \"DS-1 Orbital Battle Station\",\n  \"manufacturer\": \"Imperial Department of Military Research, Sienar Fleet Systems\",\n  \"cost_in_credits\": \"1000000000000\",\n  \"length\": \"120000\",\n  \"max_atmosphering_speed\": \"n/a\",\n  \"crew\": \"342953\",\n  \"passengers\": \"843342\",\n  \"cargo_capacity\": \"1000000000000\",\n  \"consumables\": \"3 years\",\n  \"hyperdrive_rating\": \"4.0\",\n  \"MGLT\": \"10\",\n  \"starship_class\": \"Deep Space Mobile Battlestation\",\n  \"pilots\": [],\n  \"films\": [\n    \"https://swapi.co/api/films/1/\"\n  ],\n  \"created\": \"2014-12-10T16:36:50.509000Z\",\n  \"edited\": \"2014-12-22T17:35:44.452589Z\",\n  \"url\": \"https://swapi.co/api/starships/9/\"\n}"
+				}
+			]
 		},
 		{
-			"name": "https://swapi.co/api/planets/3/",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "1f9412db-4a1c-4e6f-80e2-b1ef130919ad",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						]
-					}
-				}
-			],
+			"name": "post message about completing tests",
 			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "cookie",
-						"value": "__cfduid=daab0cc51311995fb6c23faa247bcdae01512931922; csrftoken=SABZQKlEEnIwNl5A0INM1sSNjgWxmCeV; _ga=GA1.2.1848254515.1516544488; _gid=GA1.2.282880442.1518721317; _gat=1"
-					},
-					{
-						"key": "accept-encoding",
-						"value": "gzip, deflate, br"
-					},
-					{
-						"key": "accept-language",
-						"value": "ru-UA,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk-UA;q=0.6,uk;q=0.5,ru-RU;q=0.4"
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36"
-					},
-					{
-						"key": "accept",
-						"value": "application/json, text/javascript, */*; q=0.01"
-					},
-					{
-						"key": "referer",
-						"value": "https://swapi.co/"
-					},
-					{
-						"key": "authority",
-						"value": "swapi.co"
-					},
-					{
-						"key": "x-requested-with",
-						"value": "XMLHttpRequest"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "https://swapi.co/api/planets/3/",
-					"protocol": "https",
-					"host": [
-						"swapi",
-						"co"
-					],
-					"path": [
-						"api",
-						"planets",
-						"3",
-						""
+				"auth": {
+					"type": "oauth1",
+					"oauth1": [
+						{
+							"key": "addParamsToHeader",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "addEmptyParamsToSign",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "tokenSecret",
+							"value": "iTQqvxpU2g7e0BbDyb9BcNEphfscclQwIHCwRXjAiX11F",
+							"type": "string"
+						},
+						{
+							"key": "token",
+							"value": "962420679344902145-tAZS3ds7g6QEc7Db3JPhp6T7o9jeUQX",
+							"type": "string"
+						},
+						{
+							"key": "consumerSecret",
+							"value": "VFgTo18pI7baK0qHrLAG5DPIkhwyxkrfq2SyOfk1kCGvWyrcCv",
+							"type": "string"
+						},
+						{
+							"key": "consumerKey",
+							"value": "luskQ5hA3iEi4EYq8GChEu5uj",
+							"type": "string"
+						},
+						{
+							"key": "signatureMethod",
+							"value": "HMAC-SHA1",
+							"type": "string"
+						},
+						{
+							"key": "version",
+							"value": "1.0",
+							"type": "string"
+						}
 					]
 				},
-				"description": "Generated from a curl request: \ncurl \\\"https://swapi.co/api/planets/3/\\\" -H \\\"cookie: __cfduid=daab0cc51311995fb6c23faa247bcdae01512931922; csrftoken=SABZQKlEEnIwNl5A0INM1sSNjgWxmCeV; _ga=GA1.2.1848254515.1516544488; _gid=GA1.2.282880442.1518721317; _gat=1\\\" -H \\\"accept-encoding: gzip, deflate, br\\\" -H \\\"accept-language: ru-UA,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk-UA;q=0.6,uk;q=0.5,ru-RU;q=0.4\\\" -H \\\"user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36\\\" -H \\\"accept: application/json, text/javascript, */*; q=0.01\\\" -H \\\"referer: https://swapi.co/\\\" -H \\\"authority: swapi.co\\\" -H \\\"x-requested-with: XMLHttpRequest\\\" --compressed"
-			},
-			"response": []
-		},
-		{
-			"name": "https://swapi.co/api/starships/9/",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "a088b291-be50-4ca6-b2c5-ce776d5b5ec8",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"",
-							"",
-							"pm.test(\"Response time is less than 200ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(100);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
-						"key": "cookie",
-						"value": "__cfduid=daab0cc51311995fb6c23faa247bcdae01512931922; csrftoken=SABZQKlEEnIwNl5A0INM1sSNjgWxmCeV; _ga=GA1.2.1848254515.1516544488; _gid=GA1.2.282880442.1518721317; _gat=1"
-					},
-					{
-						"key": "accept-encoding",
-						"value": "gzip, deflate, br"
-					},
-					{
-						"key": "accept-language",
-						"value": "ru-UA,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk-UA;q=0.6,uk;q=0.5,ru-RU;q=0.4"
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36"
-					},
-					{
-						"key": "accept",
-						"value": "application/json, text/javascript, */*; q=0.01"
-					},
-					{
-						"key": "referer",
-						"value": "https://swapi.co/"
-					},
-					{
-						"key": "authority",
-						"value": "swapi.co"
-					},
-					{
-						"key": "x-requested-with",
-						"value": "XMLHttpRequest"
+						"key": "Content-Type",
+						"value": "application/json"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"event\": {\r\n    \"type\": \"message_create\",\r\n    \"message_create\": {\r\n      \"target\": {\r\n        \"recipient_id\": \"962428045977112576\"\r\n      },\r\n      \"message_data\": {\r\n        \"text\": \"Dude your server is failed!!!\"\r\n      }\r\n    }\r\n  }\r\n}"
+				},
 				"url": {
-					"raw": "https://swapi.co/api/starships/9/",
+					"raw": "https://api.twitter.com/1.1/direct_messages/events/new.json",
 					"protocol": "https",
 					"host": [
-						"swapi",
-						"co"
+						"api",
+						"twitter",
+						"com"
 					],
 					"path": [
-						"api",
-						"starships",
-						"9",
-						""
+						"1.1",
+						"direct_messages",
+						"events",
+						"new.json"
 					]
 				},
-				"description": "Generated from a curl request: \ncurl \\\"https://swapi.co/api/starships/9/\\\" -H \\\"cookie: __cfduid=daab0cc51311995fb6c23faa247bcdae01512931922; csrftoken=SABZQKlEEnIwNl5A0INM1sSNjgWxmCeV; _ga=GA1.2.1848254515.1516544488; _gid=GA1.2.282880442.1518721317; _gat=1\\\" -H \\\"accept-encoding: gzip, deflate, br\\\" -H \\\"accept-language: ru-UA,ru;q=0.9,en-US;q=0.8,en;q=0.7,uk-UA;q=0.6,uk;q=0.5,ru-RU;q=0.4\\\" -H \\\"user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36\\\" -H \\\"accept: application/json, text/javascript, */*; q=0.01\\\" -H \\\"referer: https://swapi.co/\\\" -H \\\"authority: swapi.co\\\" -H \\\"x-requested-with: XMLHttpRequest\\\" --compressed"
+				"description": "1"
 			},
 			"response": []
 		}
