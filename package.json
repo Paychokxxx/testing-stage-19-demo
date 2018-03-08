@@ -4,7 +4,7 @@
   "description": "testing Stage Demo",
 	
   "scripts": {
-    "api-testы": "newman run SWAPICSV.postman_collection.json -n 3 -d swapi-data.csv"
+    "api-tests": "newman run SWAPICSV.postman_collection.json -n 3 -d swapi-data.csv"
   },
   "author": "",
   "license": "ISC",
